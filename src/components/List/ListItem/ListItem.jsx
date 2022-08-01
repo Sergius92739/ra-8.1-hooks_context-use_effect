@@ -14,7 +14,7 @@ export default function ListItem(props) {
     <li
       id={id}
       className={selected ? 'list__item active' : 'list__item'}>
-      <a onClick={handleClick} href="#">{name}</a>
+      <a className={selected ? 'selected' : ''} onClick={handleClick} href="#">{name}</a>
     </li>
   )
 }

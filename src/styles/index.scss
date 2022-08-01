@@ -133,9 +133,8 @@
     display: block;
     color: inherit;
     padding: 1em;
-    &:hover {
-      background-color: $primary-color2;
-      color: #fff;
+    &:hover:not(.selected) {
+      background-color: $neutral-base;
     }
   }
 }
