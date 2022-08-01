@@ -11,7 +11,6 @@ export default function MainPage() {
   const [loading, setLoading] = useState(true)
 
   const infoHandler = (info) => setInfo(info);
-  const loadingHandler = (value) => setLoading(value);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BASE_URL}users.json`)
@@ -26,12 +25,12 @@ export default function MainPage() {
       })
       .then((users) => {
         setList((prev) => [...prev, ...users]);
-        loadingHandler(false);
+        setLoading(false);
         setError(null)
       })
       .catch((err) => {
         setError(err);
-        loadingHandler(false)
+        setLoading(false)
         console.error(err);
       })
   }, []);
