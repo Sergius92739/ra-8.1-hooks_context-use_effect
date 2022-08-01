@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/ra-8.1-hooks_context-use_effect/static/css/main.eabb43a2.css",
+    "main.js": "/ra-8.1-hooks_context-use_effect/static/js/main.4008d026.js",
+    "static/js/787.71374338.chunk.js": "/ra-8.1-hooks_context-use_effect/static/js/787.71374338.chunk.js",
+    "static/media/Inter.ttf": "/ra-8.1-hooks_context-use_effect/static/media/Inter.9cd7588f47651215d52f.ttf",
+    "index.html": "/ra-8.1-hooks_context-use_effect/index.html",
+    "main.eabb43a2.css.map": "/ra-8.1-hooks_context-use_effect/static/css/main.eabb43a2.css.map",
+    "main.4008d026.js.map": "/ra-8.1-hooks_context-use_effect/static/js/main.4008d026.js.map",
+    "787.71374338.chunk.js.map": "/ra-8.1-hooks_context-use_effect/static/js/787.71374338.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eabb43a2.css",
+    "static/js/main.4008d026.js"
+  ]
+}
