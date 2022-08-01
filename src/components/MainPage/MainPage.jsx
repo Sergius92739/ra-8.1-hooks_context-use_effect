@@ -12,7 +12,6 @@ export default function MainPage() {
 
   const infoHandler = (info) => setInfo(info);
   const loadingHandler = (value) => setLoading(value);
-  const errorHandler = (err) => setError(err);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BASE_URL}users.json`)
@@ -28,24 +27,22 @@ export default function MainPage() {
       .then((users) => {
         setList((prev) => [...prev, ...users]);
         loadingHandler(false);
+        setError(null)
       })
       .catch((err) => {
-        errorHandler(err);
+        setError(err);
         loadingHandler(false)
         console.error(err);
       })
   }, []);
-
-  const propsList = { list, infoHandler };
-  const propsDetails = { loading, info, loadingHandler, error, errorHandler }
 
   return (
     <Fragment>
       {error && <Error />}
       {loading && <Loading />}
       <div className="app container">
-        <List {...propsList} />
-        {info && <Details {...propsDetails} />}
+        <List list={list} infoHandler={infoHandler} />
+        {info && <Details info={info} />}
       </div>
     </Fragment>
   )

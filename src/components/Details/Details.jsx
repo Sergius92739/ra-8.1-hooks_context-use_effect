@@ -3,16 +3,20 @@ import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
 import PropTypes from 'prop-types';
 
-export default function Datails(props) {
-  const { loading, info, loadingHandler, error, errorHandler } = props;
+export default function Datails({ info }) {
   const [fullData, setFullData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    loadingHandler(true);
     if (!info.id) {
       return
     }
     fetch(`${process.env.REACT_APP_BASE_URL}${info.id}.json`)
+      .then((request) => {
+        setLoading(true);
+        return request;
+      })
       .then((response) => {
         if (!response.ok) {
           throw new Error('Something went wrong...');
@@ -21,15 +25,16 @@ export default function Datails(props) {
       })
       .then((user) => {
         setFullData(user);
-        loadingHandler(false);
+        setLoading(false);
+        setError(null)
       })
       .catch((err) => {
-        errorHandler(err);
-        loadingHandler(false);
+        setError(err);
+        setLoading(false);
         console.error(err);
       })
 
-      return () => setFullData(null);
+    return () => setFullData(null);
   }, [info.id])
 
   return (
@@ -51,12 +56,10 @@ export default function Datails(props) {
 }
 
 Datails.propTypes = {
-  loading: PropTypes.bool.isRequired, 
-  info: PropTypes.object.isRequired, 
-  loadingHandler: PropTypes.func.isRequired, 
+  loading: PropTypes.bool,
+  info: PropTypes.object.isRequired,
   error: PropTypes.oneOfType([
     PropTypes.object.isRequired,
     PropTypes.oneOf([null]).isRequired,
-  ]), 
-  errorHandler: PropTypes.func.isRequired
+  ]),
 }
