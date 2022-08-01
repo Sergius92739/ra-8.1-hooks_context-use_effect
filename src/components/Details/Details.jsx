@@ -28,6 +28,8 @@ export default function Datails(props) {
         loadingHandler(false);
         console.error(err);
       })
+
+      return () => setFullData(null);
   }, [info.id])
 
   return (
